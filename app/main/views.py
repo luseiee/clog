@@ -1,6 +1,15 @@
-# Use . to call __init__.py 
 from . import main
+from flask import request, redirect
 
 @main.route('/')
 def index():
-	return '<h1>Hello World!</h1>'
+	user_agent = request.headers.get('User-agent')
+	return '<h1>Hello World! Your browser is %s</h1>' % (user_agent)
+
+@main.route('/user/<name>')
+def user(name):
+	return '<h1>Hello, %s!</h1.' % (name)
+
+@main.route('/baidu')
+def baidu():
+	return redirect('http://www.baidu.com')
