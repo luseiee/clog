@@ -1,10 +1,20 @@
 from . import main
-from flask import request, redirect, render_template
+from flask import session, redirect, render_template, url_for, flash
+from datetime import datetime
+from .forms import NameForm
 
-@main.route('/')
+@main.route('/', methods=['GET', 'POST'])
 def index():
-	user_agent = request.headers.get('User-agent')
-	return render_template('index.html')
+	form = NameForm()
+	if form.validate_on_submit():
+		old_name = session.get('name')
+		if old_name is not None and old_name!=form.name.data:
+			flash('Looks like you have changed your name!')
+		session['name'] = form.name.data
+		# use redirect to avoid form resubmit warning
+		# the url_for must include the blueporint name
+		return redirect(url_for('main.index'))
+	return render_template('index.html', current_time=datetime.utcnow(), name=session.get('name'), form=form)
 
 @main.route('/user/<name>')
 def user(name):
