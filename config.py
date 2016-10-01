@@ -1,6 +1,7 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+
 # The hierarchy of configuration class.
 class Config:
 	# The secret key is used in flask web form to prevent CSRF attack
