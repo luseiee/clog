@@ -3,7 +3,7 @@ from flask_login import current_user
 from . import auth
 from flask_login import login_user, login_required, logout_user
 from ..models import User
-from .forms import LoginForm, RegistrationForm
+from .forms import LoginForm, RegistrationForm, ChangePasswordForm
 from .. import db
 from ..email import send_email
 
@@ -73,3 +73,17 @@ def unconfirmed():
     if current_user.is_anonymous or current_user.confirmed:
         return redirect(url_for('main.index'))
     return render_template('auth/unconfirmed.html')
+
+@auth.route('/change-password', methods=['GET','POST'])
+@login_required
+def change_password():
+    form = ChangePasswordForm()
+    if form.validate_on_submit():
+        if current_user.verify_password(form.old_password.data):
+            current_user.password = form.password.data
+            db.session.add(current_user)
+            flash('Your password has been updated.')
+            return redirect(url_for('main.index'))
+        else:
+            flash('Invalid password')
+    return render_template('auth/change_password.html', form=form)
