@@ -1,13 +1,13 @@
 """empty message
 
-Revision ID: cb2bd4494612
+Revision ID: 9b7c858d6ff1
 Revises: None
-Create Date: 2016-10-06 11:11:22.080306
+Create Date: 2016-10-06 16:32:24.073025
 
 """
 
 # revision identifiers, used by Alembic.
-revision = 'cb2bd4494612'
+revision = '9b7c858d6ff1'
 down_revision = None
 
 from alembic import op
@@ -32,6 +32,11 @@ def upgrade():
     sa.Column('role_id', sa.Integer(), nullable=True),
     sa.Column('password_hash', sa.String(length=128), nullable=True),
     sa.Column('confirmed', sa.Boolean(), nullable=True),
+    sa.Column('name', sa.String(length=64), nullable=True),
+    sa.Column('location', sa.String(length=64), nullable=True),
+    sa.Column('about_me', sa.Text(), nullable=True),
+    sa.Column('member_since', sa.DateTime(), nullable=True),
+    sa.Column('last_seen', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['role_id'], ['roles.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
