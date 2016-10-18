@@ -7,7 +7,7 @@ class Config:
     # The secret key is used in flask web form to prevent CSRF attack
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
-    SSL_DISABLE = False
+    SSL_DISABLE = True
     FLASKY_MAIL_SUBJECT_PREFIX = '[CLOG]'
     FLASKY_MAIL_SENDER = 'Clog Admin <clogadm@outlook.com>'
     FLASKY_ADMIN = os.environ.get('CLOG_ADMIN') or 'clogadm@outlook.com'
