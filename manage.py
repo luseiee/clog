@@ -73,6 +73,17 @@ def newdeploy():
                      member_since=forgery_py.date.date(True))
     db.session.add(u2)
 
+    u3 = User(email='674951896@qq.com',
+                     username='Omnipresent',
+                     password='123321',
+                     role_id=2,
+                     confirmed=True,
+                     name=forgery_py.name.full_name(),
+                     location=forgery_py.address.city(),
+                     about_me=forgery_py.lorem_ipsum.sentence(),
+                     member_since=forgery_py.date.date(True))
+    db.session.add(u3)
+
     db.session.commit()
 
 @manager.command
