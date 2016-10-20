@@ -33,6 +33,10 @@ div.post-author {
     /*font-weight: bold;*/
     font-size: 110%;
 }
+div.post-body {
+    max-height: 300px;
+    overflow-y: auto;
+}
 div.post-thumbnail {
     position: absolute;
 }

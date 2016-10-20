@@ -4,6 +4,16 @@
 
 {% block title %}Clog - Post{% endblock %}
 
+{% block head %}
+{{ super() }}
+<style type="text/css">
+    div.post-body {
+        max-height: 1000px;
+        overflow-y: auto;
+    }
+</style>
+{% endblock %}
+
 {% block page_content %}
 {% include '_posts.html' %}
 <h4 id="comments">Comments</h4>
