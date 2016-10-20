@@ -26,10 +26,12 @@ ul.posts li.post:hover {
     background-color: #f0f0f0;
 }
 div.post-date {
-    float: right;
+    /*float: right;*/
+    color: #666666;
 }
 div.post-author {
-    font-weight: bold;
+    /*font-weight: bold;*/
+    font-size: 110%;
 }
 div.post-thumbnail {
     position: absolute;
@@ -82,25 +84,25 @@ div.pagination {
 div.flask-pagedown-preview {
     margin: 10px 0px 10px 0px;
     border: 1px solid #e0e0e0;
-    padding: 4px;
+    padding: 0px;
 }
 div.flask-pagedown-preview h1 {
-    font-size: 140%;
+    font-size: 190%;
 }
 div.flask-pagedown-preview h2 {
-    font-size: 130%;
+    font-size: 170%;
 }
 div.flask-pagedown-preview h3 {
-    font-size: 120%;
+    font-size: 150%;
 }
 .post-body h1 {
-    font-size: 140%;
+    font-size: 190%;
 }
 .post-body h2 {
-    font-size: 130%;
+    font-size: 170%;
 }
 .post-body h3 {
-    font-size: 120%;
+    font-size: 150%;
 }
 .table.followers tr {
     border-bottom: 1px solid #e0e0e0;

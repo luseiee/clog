@@ -36,5 +36,46 @@ def deploy():
 
     User.add_self_follows()
 
+@manager.command
+def revise():
+    """Run deployment tasks."""
+    from flask_migrate import init, migrate, upgrade
+    from app.models import Role, User, Post
+
+    init()
+    migrate()
+    upgrade()
+
+    Role.insert_roles()
+
+    User.add_self_follows()
+
+    User.generate_fake()
+
+    Post.generate_fake()
+
+    import forgery_py
+    u = User(email='clogadm@outlook.com',
+                     username='Admin',
+                     password='1',
+                     confirmed=True,
+                     name=forgery_py.name.full_name(),
+                     location=forgery_py.address.city(),
+                     about_me=forgery_py.lorem_ipsum.sentence(),
+                     member_since=forgery_py.date.date(True))
+    db.session.add(u)
+
+    u2 = User(email='phillu@126.com',
+                     username='Lu Xuchao',
+                     password='1',
+                     confirmed=True,
+                     name=forgery_py.name.full_name(),
+                     location=forgery_py.address.city(),
+                     about_me=forgery_py.lorem_ipsum.sentence(),
+                     member_since=forgery_py.date.date(True))
+    db.session.add(u2)
+
+    db.session.commit()
+
 if __name__ == '__main__':
     manager.run()

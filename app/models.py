@@ -252,6 +252,7 @@ login_manager.anonymous_user = AnonymousUser
 class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.Text)
     body = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -267,7 +268,8 @@ class Post(db.Model):
         user_count = User.query.count()
         for i in range(count):
             u = User.query.offset(randint(0, user_count - 1)).first()
-            p = Post(body=forgery_py.lorem_ipsum.sentences(randint(1, 3)),
+            p = Post(title=forgery_py.forgery.lorem_ipsum.words(quantity=randint(3,7), as_list=False),
+                     body=forgery_py.forgery.lorem_ipsum.paragraphs(quantity=randint(2,10), sentences_quantity=randint(2,10)),
                      timestamp=forgery_py.date.date(True),
                      author=u)
             db.session.add(p)

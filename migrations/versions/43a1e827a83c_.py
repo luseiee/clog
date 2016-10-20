@@ -1,13 +1,13 @@
 """empty message
 
-Revision ID: 06d215fea55f
+Revision ID: 43a1e827a83c
 Revises: None
-Create Date: 2016-10-20 16:54:31.899247
+Create Date: 2016-10-20 21:43:55.097353
 
 """
 
 # revision identifiers, used by Alembic.
-revision = '06d215fea55f'
+revision = '43a1e827a83c'
 down_revision = None
 
 from alembic import op
@@ -53,6 +53,7 @@ def upgrade():
     )
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('title', sa.Text(), nullable=True),
     sa.Column('body', sa.Text(), nullable=True),
     sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.Column('author_id', sa.Integer(), nullable=True),
