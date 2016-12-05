@@ -1,0 +1,42 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.jumbotron, .image {
+  background-color: #DDDDDD;
+  border-radius: 6px;
+}
+
+.container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #AAAAAA;
+  border-radius: 6px;
+}
+
+.col-center-block {
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.explain {
+  padding-top: 10px;
+}
+
+.image {
+  padding: 10px;
+}
+
+.content p{
+  text-align: left;
+  font-size: 20px;
+}
+
+.content {
+  padding-top: 15px;
+  font-size:16px;
+}
+

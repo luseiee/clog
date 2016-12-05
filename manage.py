@@ -38,7 +38,7 @@ def deploy():
 
 @manager.command
 def newdeploy():
-    """Run deployment tasks."""
+    """Run deployment tasks with pre-defined users."""
     from flask_migrate import init, migrate, upgrade
     from app.models import Role, User, Post
 

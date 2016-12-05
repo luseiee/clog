@@ -251,3 +251,8 @@ def moderate_disable(id):
 @main.route('/changelog')
 def changelog():
     return render_template('changelog.html')
+
+# Add some front-end exercises
+@main.route('/fcc-project/<int:id>')
+def fcc_project(id):
+    return render_template('fcc-project/%d/%d.html' % (id, id))
